@@ -155,7 +155,7 @@ static esp_err_t BME280_readCalibrationRegisters(i2c_comm_t* comm, bmx280_calib_
  * float precision gives best accuracy.
  */
 
-// Returns temperature in DegC, double precision. Output value of “51.23” equals 51.23 DegC.
+// Returns temperature in DegC, double precision. Output value of “51.23� equals 51.23 DegC.
 // t_fine carries fine temperature as global value
 static temp_reading_t BME280_compensate_T_double(bmx280_calib_t* calib, BME280_S32_t adc_T) {
 	double var1, var2;
@@ -169,7 +169,7 @@ static temp_reading_t BME280_compensate_T_double(bmx280_calib_t* calib, BME280_S
 	};
 	return reading;
 }
-// Returns pressure in Pa as double. Output value of “96386.2” equals 96386.2 Pa = 963.862 hPa
+// Returns pressure in Pa as double. Output value of “96386.2� equals 96386.2 Pa = 963.862 hPa
 static double BME280_compensate_P_double(bmx280_calib_t* calib, BME280_S32_t t_fine, BME280_S32_t adc_P) {
 	double var1, var2, p;
 	var1 = ((double) t_fine / 2.0) - 64000.0;
@@ -190,7 +190,7 @@ static double BME280_compensate_P_double(bmx280_calib_t* calib, BME280_S32_t t_f
 	return p;
 }
 
-// Returns humidity in %rH as as double. Output value of “46.332” represents 46.332 %rH
+// Returns humidity in %rH as as double. Output value of “46.332� represents 46.332 %rH
 static double BME280_compensate_H_double(bmx280_calib_t* calib, BME280_S32_t t_fine, BME280_S32_t adc_H) {
 	double var_H;
 	var_H = (((double)t_fine) - 76800.0);
@@ -240,7 +240,7 @@ esp_err_t BME280_verify_chip(bme280_sensor_t* bme280_sensor) {
 	uint8_t chipID = 0;
 	uint8_t attempt = 0;
 	while (read_i2c(&bme280_sensor->i2c_comm, BME280_CHIP_ID_REG, &chipID,1) != ESP_OK && attempt++ < 5) {
-		ESP_LOGW(TAG, "[%x] failed to read chip id (attempt %d)", bme280_sensor->i2c_comm.device_addr, attempt)
+		ESP_LOGW(TAG, "[%x] failed to read chip id (attempt %d)", bme280_sensor->i2c_comm.device_addr, attempt);
 		vTaskDelay(20/portTICK_PERIOD_MS);
 	}
 

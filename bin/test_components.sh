@@ -1,1 +1,0 @@
-TEST_COMPONENTS='oap-common oap-hw-bmx280 oap-hw-pmsx003 oap-meter oap-http oap-aws oap-thingspk oap-ota oap-wifi'

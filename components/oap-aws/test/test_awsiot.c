@@ -4,7 +4,7 @@
 #include <string.h>
 #include "unity.h"
 #include "oap_storage.h"
-#include "awsiot.h"
+//#include "awsiot.h"
 #include "oap_test.h"
 
 static const char* TAG = "test_awsiot";

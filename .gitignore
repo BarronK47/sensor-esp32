@@ -7,3 +7,4 @@ main/*.bak
 core.dat
 /tmp
 /logs
+/certs/

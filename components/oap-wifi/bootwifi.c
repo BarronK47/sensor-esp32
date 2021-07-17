@@ -29,7 +29,7 @@
 #include <lwip/sockets.h>
 #include "bootwifi.h"
 #include "sdkconfig.h"
-#include "apps/sntp/sntp.h"
+#include "sntp/sntp.h"
 #include "oap_common.h"
 #include "freertos/event_groups.h"
 #include "server.h"
@@ -89,7 +89,7 @@ const int STA_MODE_BIT 		= 0x00000100; //BIT2
 const int AP_MODE_BIT 		= 0x00001000; //BIT3
 
 
-static void initialize_sntp(void)
+/*static void initialize_sntp(void)
 {
 	if (_sntp_initialised) return;
 	_sntp_initialised = 1;
@@ -97,7 +97,7 @@ static void initialize_sntp(void)
     sntp_setoperatingmode(SNTP_OPMODE_POLL);
     sntp_setservername(0, "pool.ntp.org");
     sntp_init();
-}
+}*/
 
 static esp_err_t set_access_point_ip() {
     tcpip_adapter_ip_info_t info = {};
@@ -208,7 +208,7 @@ static esp_err_t esp32_wifi_eventHandler(void *ctx, system_event_t *event) {
 				case WIFI_MODE_STA:
 					ESP_LOGI(tag, "\n\n*** SENSOR IP (network '%s') http://"IPSTR"\n", oap_wifi_config.ssid, IP2STR(&event->event_info.got_ip.ip_info.ip));
 
-					initialize_sntp();
+					/*initialize_sntp();*/
 					/*
 					 * TODO if we attempt to make an SSL request (by OTA, didn't check others) when wifi is in AP mode,
 					 * mongoose goes into infinite loop;

@@ -49,21 +49,21 @@ static char* prepare_thingspeak_payload(oap_measurement_t* meas) {
 	sprintf(payload, "api_key=%s", apikey);
 
 	if (meas->pm) {
-		sprintf(payload, "%s&field1=%d&field2=%d&field3=%d", payload,
+		sprintf(payload+strlen(payload), "&field1=%d&field2=%d&field3=%d",
 			meas->pm->pm1_0,
 			meas->pm->pm2_5,
 			meas->pm->pm10);
 	}
 
 	if (meas->env) {
-		sprintf(payload, "%s&field4=%.2f&field5=%.2f&field6=%.2f", payload,
+		sprintf(payload+strlen(payload), "&field4=%.2f&field5=%.2f&field6=%.2f",
 			meas->env->temp,
 			meas->env->pressure,
 			meas->env->humidity);
 	}
 
 	//memory metrics
-	sprintf(payload, "%s&field7=%d&field8=%d", payload,
+	sprintf(payload+strlen(payload), "&field7=%d&field8=%d",
 		avg_free_heap_size(),
 		xPortGetMinimumEverFreeHeapSize());
 
