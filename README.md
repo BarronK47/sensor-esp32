@@ -1,3 +1,8 @@
+# ESP-IDF Adaptation
+
+This is an attempt to adapt the original repo to use the latest ESP-IDF and CMake functionality.
+
+
 # OpenAirProject AirQuality / Dust Meter
 
 ## Features
